@@ -1,13 +1,33 @@
 import React from "react";
-import { Button, TextField, Container, Typography } from "@material-ui/core";
+import {
+  Button,
+  TextField,
+  Container,
+  Typography,
+  Card,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
 import { Link } from "react-router-dom";
+
+const useStyles = makeStyles({
+  signup_btn: {},
+  Container_signup: {
+    margin: 10,
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+  },
+  cardstyle: { padding: 10, maxWidth: 400, height: 400 },
+  textfield: { width: "100%" },
+});
+
 function Signup() {
+  const classes = useStyles();
   return (
-    <>
-      <Container className="Container_login" component="div" fixed>
+    <Container className="Container_signup" component="div" fixed>
+      <Card className={classes.cardstyle}>
         <TextField
+          fullWidth
           required
           id="outlined-basic"
           label="Full Name"
@@ -15,6 +35,7 @@ function Signup() {
         />
         <br />
         <TextField
+          fullWidth
           required
           id="outlined-basic"
           label="Email"
@@ -22,6 +43,7 @@ function Signup() {
         />
         <br />
         <TextField
+          fullWidth
           required
           id="outlined-basic"
           label="Password"
@@ -35,15 +57,15 @@ function Signup() {
           variant="outlined"
         />
         <br />
-        <Button className="login_btn" variant="contained" color="secondry">
+        <Button className="signup_btn" variant="contained" color="secondry">
           Sign Up
         </Button>
         <br />
         <Typography variant="span">
-          already have account?<Link to="/">LogIn</Link>{" "}
+          already have account?<Link to="/">LogIn</Link>
         </Typography>
-      </Container>
-    </>
+      </Card>
+    </Container>
   );
 }
 
