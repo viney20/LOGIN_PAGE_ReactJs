@@ -1,16 +1,10 @@
 import React from "react";
-import {
-  Button,
-  TextField,
-  Container,
-  Typography,
-  Card,
-} from "@material-ui/core";
+import { Button, TextField, Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles({
-  signup_btn: {},
+const useStyles = makeStyles((theme) => ({
+  signup_btn: { margin: theme.spacing(1) },
   Container_signup: {
     margin: 10,
     display: "flex",
@@ -18,54 +12,62 @@ const useStyles = makeStyles({
     flexDirection: "column",
   },
   cardstyle: { padding: 10, maxWidth: 400, height: 400 },
-  textfield: { width: "100%" },
-});
+  textfield: { width: "90%", margin: theme.spacing(3) },
+}));
 
 function Signup() {
   const classes = useStyles();
   return (
-    <Container className="Container_signup" component="div" fixed>
-      <Card className={classes.cardstyle}>
-        <TextField
-          fullWidth
-          required
-          id="outlined-basic"
-          label="Full Name"
-          variant="outlined"
-        />
-        <br />
-        <TextField
-          fullWidth
-          required
-          id="outlined-basic"
-          label="Email"
-          variant="outlined"
-        />
-        <br />
-        <TextField
-          fullWidth
-          required
-          id="outlined-basic"
-          label="Password"
-          variant="outlined"
-        />
-        <br />
-        <TextField
-          required
-          id="outlined-basic"
-          label="Confirm Password"
-          variant="outlined"
-        />
-        <br />
-        <Button className="signup_btn" variant="contained" color="secondry">
-          Sign Up
-        </Button>
-        <br />
-        <Typography variant="span">
-          already have account?<Link to="/">LogIn</Link>
-        </Typography>
-      </Card>
-    </Container>
+    <form>
+      <TextField
+        className={classes.textfield}
+        fullWidth
+        required
+        id="outlined-basic"
+        label="Full Name"
+        variant="outlined"
+      />
+
+      <TextField
+        className={classes.textfield}
+        fullWidth
+        required
+        id="outlined-basic"
+        label="Email"
+        variant="outlined"
+      />
+
+      <TextField
+        className={classes.textfield}
+        fullWidth
+        required
+        id="outlined-basic"
+        label="Password"
+        variant="outlined"
+      />
+
+      <TextField
+        className={classes.textfield}
+        fullWidth
+        required
+        id="outlined-basic"
+        label="Confirm Password"
+        variant="outlined"
+      />
+
+      <Button
+        className={(classes.textfield, classes.signup_btn)}
+        variant="contained"
+        color="primary"
+        fullWidth
+      >
+        Sign Up
+      </Button>
+
+      <Typography variant="span">
+        Already Have Account?<Link to="/">LogIn</Link>
+      </Typography>
+    </form>
   );
 }
 
